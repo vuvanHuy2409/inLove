@@ -19,7 +19,7 @@ const CONFIG = {
 const questionsData = [
     { q: "1. Lần đầu tiên gặp tớ, ấn tượng của cậu là gì?", hints: ["Lạnh lùng ", "Dễ thương ", "Khó gần", "Ấn tượng xấu ", "Bình thường"] },
     { q: "2. Cậu dễ bị thu hút bởi năng lượng như thế nào?", hints: ["Sôi nổi, hoạt ngôn ", "Trầm tính, tinh tế ", "Hài hước", "Thông minh"] },
-    { q: "3. Có hành động nhỏ nào (Green flag) dễ làm cậu 'rung rinh' không?", hints: ["Xắn tay áo", "Tập trung làm việc", "Biết nấu ăn ", "Thơm tho"] },
+    { q: "3. Có hành động nhỏ nào dễ làm cậu rung động không?", hints: ["Tập trung làm việc", "Biết nấu ăn ", "6"] },
     { q: "4. Cậu thích quà bất ngờ đắt tiền hay đồ handmade ý nghĩa?", hints: ["Đắt tiền mới thích ", "Handmade tình cảm ", "Gì cũng được", "Không quan trọng quà"] },
     { q: "5. Nếu người yêu nấu ăn dở tệ, cậu sẽ làm gì?", hints: ["Chê thẳng thừng", "Cố ăn rồi khen ngon ", "Dẫn đi ăn tiệm", "Cùng nhau nấu lại"] },
     { q: "6. Đang chơi game/làm việc mà người yêu kêu buồn, cậu sẽ...?", hints: ["Chơi xong rồi dỗ", "Dừng lại dỗ ngay ", "Kệ, đang bận mà", "Vừa chơi vừa nhắn"] },
@@ -34,7 +34,7 @@ const questionsData = [
     { q: "15. Bài học lớn nhất từ quá khứ là gì?", hints: ["Yêu bản thân hơn", "Không kiểm soát", "Tin tưởng", "Giao tiếp nhiều hơn"] },
     { q: "16. Điều quan trọng nhất để duy trì quan hệ?", hints: ["Sự tin tưởng ", "Tôn trọng nhau", "Hợp chuyện", "Tài chính"] },
     { q: "17. Cậu có sẵn sàng mở lòng vào thời điểm này không?", hints: ["Sẵn sàng ", "Chưa, còn bận lắm", "Đang suy nghĩ...", "Cần tìm người phù hợp"] },
-    { q: "18. Nếu tớ làm cho cậu buồn, thất vọng thì cậu có suy nghĩ gì?", hints: ["Buồn", "Thất vọng ", "Rất thất vọng"] },
+    { q: "18. Nếu tớ làm cho cậu buồn, thất vọng thì cậu có suy nghĩ gì?", hints: ["Buồn", "Thất vọng ", "Rất thất vọng","Và bỏ qua cho tớ"] },
     { q: "19. Mẫu người cậu kể nãy giờ, có thấy giống tớ không?", hints: ["Giống xíu xiu", "Giống y hệt ", "Không giống lắm", "Đang xem xét haha"] },
     { q: "20. Tớ muốn biết suy nghĩ thật lòng của cậu, về tớ, về tất cả về tớ?"}
 ];
