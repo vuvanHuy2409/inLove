@@ -2,62 +2,294 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Gửi Cậu Nờ Tờ Tờ Hờ</title>
-    
-    <link rel="stylesheet" href="style.css">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Pacifico&display=swap" rel="stylesheet">
-    
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gửi Em - Valentine 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Patrick+Hand&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #e91e63;
+            --secondary-color: #f48fb1;
+            --bg-color: #fce4ec;
+            --text-color: #880e4f;
+            --paper-color: #fffaf0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Patrick Hand', cursive; /* Font chữ giống viết tay */
+            background-color: var(--bg-color);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* --- Hiệu ứng nền trái tim --- */
+        .heart-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .heart {
+            position: absolute;
+            color: var(--secondary-color);
+            opacity: 0.5;
+            animation: floatUp linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+            50% { opacity: 0.8; }
+            100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+        }
+
+        /* --- Container chính --- */
+        .container {
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(233, 30, 99, 0.2);
+            text-align: center;
+            max-width: 90%;
+            width: 420px;
+            position: relative;
+            transition: all 0.5s ease-in-out;
+        }
+
+        /* --- Màn hình khóa --- */
+        #login-screen h1 {
+            font-family: 'Dancing Script', cursive;
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .lock-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        input {
+            width: 80%;
+            padding: 12px;
+            margin: 15px 0;
+            border: 2px solid var(--secondary-color);
+            border-radius: 15px;
+            text-align: center;
+            font-family: 'Patrick Hand', cursive;
+            font-size: 1.2rem;
+            outline: none;
+            color: var(--text-color);
+        }
+
+        input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 8px rgba(233, 30, 99, 0.3);
+        }
+
+        .hint {
+            font-size: 0.9rem;
+            color: #777;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background: linear-gradient(45deg, #ff4081, #e91e63);
+            color: white;
+            border: none;
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-family: 'Patrick Hand', cursive;
+            cursor: pointer;
+            transition: transform 0.2s;
+            box-shadow: 0 5px 15px rgba(233, 30, 99, 0.3);
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        .error {
+            color: #d32f2f;
+            font-size: 1rem;
+            margin-top: 10px;
+            display: none;
+            font-weight: bold;
+        }
+
+        /* --- Màn hình thư (Ẩn mặc định) --- */
+        #letter-screen {
+            display: none;
+            text-align: left;
+            background-color: var(--paper-color);
+            border: 1px solid #eee;
+            /* Giả lập giấy viết thư */
+            background-image: radial-gradient(#ddd 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        .letter-content {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #4a4a4a;
+            white-space: pre-wrap; /* Giữ định dạng xuống dòng */
+            min-height: 200px;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1.2rem;
+            background-color: #333;
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+
+        .heart-finish {
+            font-size: 2rem;
+            text-align: center;
+            display: block;
+            margin-top: 20px;
+            color: var(--primary-color);
+            opacity: 0;
+            transform: scale(0);
+            transition: all 0.5s ease;
+        }
+
+        .show-heart {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+    </style>
 </head>
 <body>
 
-    <ul class="circles">
-        <li></li><li></li><li></li><li></li><li></li>
-        <li></li><li></li><li></li><li></li><li></li>
-    </ul>
+    <div class="heart-bg" id="heart-bg"></div>
 
-    <div class="card">
-        <div id="welcome-screen" class="fade-in">
-            <h1>Chào cậu!</h1>
-            <p class="intro-text">
-                Tớ có vài câu hỏi muốn gửi đến cậu.<br>
-                Hãy trả lời thật lòng để tớ hiểu cậu hơn nhé!
-            </p>
-            <button class="btn" onclick="startQuestions()">Bắt đầu</button>
-        </div>
-
-        <div id="question-screen" class="hidden">
-            <div class="progress-container">
-                <div class="progress-bar" id="progress-bar"></div>
-            </div>
-            
-            <div id="question-content" class="fade-in">
-                <div class="question-text" id="q-text">Đang tải...</div>
-                
-                <div id="hints-container"></div>
-
-                <textarea id="q-answer" placeholder="Nhập câu trả lời của cậu vào đây..."></textarea>
-                
-                <div class="nav-buttons">
-                    <button class="btn btn-secondary hidden" id="prev-btn" onclick="prevQuestion()">Quay lại</button>
-                    <button class="btn" id="next-btn" onclick="nextQuestion()">Tiếp theo ➜</button>
-                </div>
-            </div>
-        </div>
-
-        <div id="loading-overlay" class="hidden">
-            <div class="spinner"></div>
-            <p>Đang gửi thư đi...</p>
-        </div>
-
-        <div id="finish-screen" class="hidden fade-in">
-            <h1 style="color: var(--primary)">Cảm ơn cậu!</h1>
-            <p>Tớ đã nhận được những chia sẻ của cậu.</p>
-            <p>Sớm thôi, tớ sẽ phản hồi lại câu trả lời này.</p>
-        </div>
+    <div class="container" id="login-screen">
+        <div class="lock-icon">🔒</div>
+        <h1>Bí mật của chúng mình</h1>
+        <p>Gõ đúng "ngày bắt đầu" để mở quà nhé!</p>
+        
+        <input type="text" id="password" placeholder="dd/mm/yyyy" autocomplete="off">
+        <div class="hint">Gợi ý: Ngày 01/01/2024</div>
+        
+        <button onclick="checkPass()">Mở Khóa</button>
+        <p class="error" id="error-msg">Sai rồi bé ơi, thử lại nào!</p>
     </div>
-    <script src="script.js"></script>
+
+    <div class="container" id="letter-screen">
+        <div id="typewriter-area" class="letter-content"></div>
+        <div class="heart-finish" id="heart-finish">❤️ Yêu em ❤️</div>
+    </div>
+
+    <script>
+        // --- 1. Tạo hiệu ứng tim bay nền ---
+        function createHearts() {
+            const bg = document.getElementById('heart-bg');
+            for(let i=0; i<30; i++) {
+                let heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '❤';
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+                heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
+                heart.style.animationDelay = (Math.random() * 5) + 's';
+                bg.appendChild(heart);
+            }
+        }
+        createHearts();
+
+        // --- 2. Xử lý Logic Mật khẩu ---
+        const correctPass = "07/01/2026";
+        
+        function checkPass() {
+            const input = document.getElementById('password').value.trim();
+            const errorMsg = document.getElementById('error-msg');
+            const loginScreen = document.getElementById('login-screen');
+            const letterScreen = document.getElementById('letter-screen');
+
+            if (input === correctPass) {
+                // Hiệu ứng chuyển cảnh
+                loginScreen.style.opacity = 0;
+                loginScreen.style.transform = "scale(0.8)";
+                
+                setTimeout(() => {
+                    loginScreen.style.display = 'none';
+                    letterScreen.style.display = 'block';
+                    // Bắt đầu gõ chữ
+                    typeWriter();
+                }, 500);
+
+            } else {
+                errorMsg.style.display = 'block';
+                // Hiệu ứng rung lắc khi sai
+                loginScreen.animate([
+                    { transform: 'translateX(0)' },
+                    { transform: 'translateX(-10px)' },
+                    { transform: 'translateX(10px)' },
+                    { transform: 'translateX(0)' }
+                ], { duration: 300 });
+            }
+        }
+
+        // Cho phép ấn Enter
+        document.getElementById('password').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') checkPass();
+        });
+
+        // --- 3. Nội dung thư & Hiệu ứng gõ máy ---
+        const letterText = 
+`Chào bé yêu của anh,
+
+Có lẽ em sẽ bất ngờ lắm khi nhận được đường link này đúng không? Anh đã dành thời gian ngồi code nó riêng cho em đấy.
+
+Sắp đến Valentine rồi, anh nhận được món quà sớm từ em làm anh vui và cảm động lắm. Cảm ơn em nhiều nhé, không chỉ vì món quà vật chất, mà vì tình cảm em đặt vào đó. Anh trân trọng nó vô cùng.
+
+Nhân dịp này, anh muốn gửi tặng lại em những lời chúc ngọt ngào nhất. Chúc cô gái của anh luôn xinh đẹp, rạng rỡ và hạnh phúc.
+
+Cảm ơn ngày 07/01/2026 đã đến, để chúng ta bắt đầu một hành trình tuyệt vời cùng nhau. Mong rằng Valentine này và nhiều Valentine sau nữa, mình vẫn sẽ nắm tay nhau như thế này nhé.
+
+Cảm ơn em vì tất cả!`;
+
+        let i = 0;
+        const speed = 50; // Tốc độ gõ (ms)
+
+        function typeWriter() {
+            if (i < letterText.length) {
+                document.getElementById("typewriter-area").innerHTML += letterText.charAt(i);
+                i++;
+                // Tự động cuộn xuống nếu văn bản dài
+                // document.getElementById("letter-screen").scrollTop = document.getElementById("letter-screen").scrollHeight; 
+                setTimeout(typeWriter, speed);
+            } else {
+                // Khi gõ xong thì hiện trái tim chốt hạ
+                document.getElementById('heart-finish').classList.add('show-heart');
+            }
+        }
+    </script>
 </body>
 </html>
