@@ -3,58 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Gửi Cậu - Một Chút Tâm Tư</title>
+    <title>Gửi Cậu Nờ Tờ Tờ Hờ</title>
 
-    
     <link rel="stylesheet" href="style.css">
+
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Pacifico&display=swap" rel="stylesheet">
+
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 <body>
 
-    <div id="bg-hearts"></div>
+    <ul class="circles">
+        <li></li><li></li><li></li><li></li><li></li>
+        <li></li><li></li><li></li><li></li><li></li>
+    </ul>
 
     <div class="card">
-        <div id="welcome-screen" class="screen active">
-            <h1 class="title-anim">Chào cậu! 👋</h1>
+        
+        <div id="welcome-screen" class="fade-in">
+            <h1>Chào cậu!</h1>
             <p class="intro-text">
-                Tớ có vài câu hỏi nhỏ xíu muốn gửi đến cậu.<br>
+                Tớ có vài câu hỏi muốn gửi đến cậu.<br>
                 Hãy trả lời thật lòng để tớ hiểu cậu hơn nhé!
             </p>
-            <button class="btn glow-btn" onclick="startQuestions()">Bắt đầu thôi ❤️</button>
+            <button class="btn" onclick="startQuestions()">Bắt đầu</button>
         </div>
 
-        <div id="question-screen" class="screen hidden">
+        <div id="question-screen" class="hidden">
             <div class="progress-container">
                 <div class="progress-bar" id="progress-bar"></div>
             </div>
-            
-            <div id="question-container">
+
+            <div id="question-content" class="fade-in">
                 <div class="question-text" id="q-text">Đang tải...</div>
+
                 <div id="hints-container"></div>
                 <textarea id="q-answer" placeholder="Nhập câu trả lời của cậu vào đây..."></textarea>
-            </div>
-            
-            <div class="nav-buttons">
-                <button class="btn btn-secondary hidden" id="prev-btn" onclick="prevQuestion()">Quay lại</button>
-                <button class="btn glow-btn" id="next-btn" onclick="nextQuestion()">Tiếp theo ➜</button>
+
+                <div class="nav-buttons">
+                    <button class="btn btn-secondary hidden" id="prev-btn" onclick="prevQuestion()">Quay lại</button>
+                    <button class="btn" id="next-btn" onclick="nextQuestion()">Tiếp theo ➜</button>
+                </div>
             </div>
         </div>
 
         <div id="loading-overlay" class="hidden">
-            <div class="heart-loader"></div>
+            <div class="spinner"></div>
             <p>Đang gửi thư đi...</p>
         </div>
 
-        <div id="finish-screen" class="screen hidden">
-            <h1 style="color: var(--primary); font-family: 'Pacifico', cursive;">Cảm ơn cậu! ❤️</h1>
+        <div id="finish-screen" class="hidden fade-in">
+            <h1 style="color: var(--primary)">Cảm ơn cậu!</h1>
             <p>Tớ đã nhận được những chia sẻ của cậu.</p>
-            <p>Sớm thôi, tớ sẽ phản hồi lại tình cảm này.</p>
-            <div id="confetti-container"></div>
+            <p>Sớm thôi, tớ sẽ phản hồi lại câu trả lời này.</p>
         </div>
-    </div>
-
-    
-    <script src="script.js"></script>
+        
+    </div> <script src="script.js"></script>
 </body>
 </html>
